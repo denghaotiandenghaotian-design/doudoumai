@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="广州中考 AI 辅助复习系统：考点库 / 真题库 / 智能刷题 / 错题回顾 / 复习计划 / 思维导图 / 模拟考试 / 背诵打卡 / 2027 预测">
+  <title>广州中考 AI 辅助复习系统</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- 顶部应用栏 -->
+  <header class="topbar no-print">
+    <div class="topbar-inner">
+      <button class="brand" data-action="goDashboard" title="返回首页">
+        <span class="brand-logo">📘</span>
+        <span class="brand-text">广州中考 AI 复习</span>
+      </button>
+      <div class="subject-switcher" id="subjectSwitcher" role="tablist" aria-label="学科切换">
+        <button class="subject-btn subject-math" data-action="switchSubject" data-id="math">数学</button>
+        <button class="subject-btn subject-physics" data-action="switchSubject" data-id="physics">物理</button>
+        <button class="subject-btn subject-olympiad" data-action="switchSubject" data-id="olympiad">初中奥数</button>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn btn-ghost" data-action="printView" title="打印/导出当前页面">🖨️ 打印</button>
+        <button class="btn btn-ghost btn-danger" data-action="clearData" title="清空本地数据">🗑️ 清空数据</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 桌面侧边导航 + 主内容区 -->
+  <div class="layout">
+    <nav class="sidebar no-print" id="sidebarNav" aria-label="主导航"></nav>
+    <main id="app" class="main-content" tabindex="-1"></main>
+  </div>
+
+  <!-- 移动端底部 Tab 导航 -->
+  <nav class="bottom-tabbar no-print" id="bottomTabbar" aria-label="移动端导航"></nav>
+
+  <!-- 脚本按固定顺序引入（不可颠倒）：数据层 → 存储层 → 路由 → 模块 → 装配 -->
+  <script src="js/data-math.js"></script>
+  <script src="js/data-math-v2a.js"></script>
+  <script src="js/data-math-v2b.js"></script>
+  <script src="js/data-physics.js"></script>
+  <script src="js/data-physics-v2a.js"></script>
+  <script src="js/data-physics-v2b.js"></script>
+  <script src="js/data-olympiad.js"></script>
+  <script src="js/data-papers.js"></script>
+  <script src="js/paper-engine.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/modules-learn.js"></script>
+  <script src="js/modules-plan.js"></script>
+  <script src="js/modules-predict.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
