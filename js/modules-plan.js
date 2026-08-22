@@ -224,7 +224,9 @@ function renderZhenTiList(zt, f) {
         '<div class="small"><span class="bold">考点：</span>' + esc(kp ? kp.name + '（' + kp.board + '）' : '未知') + '</div>' +
         '<div class="small"><span class="bold">答案：</span>' + esc(q.answer) + '</div>' +
         '<div class="small muted">' + esc(q.analysis) + '</div>' +
-        (isPending ? '<div class="alert alert-warn" style="margin-top:6px">⚠️ 真题原文涉及版权，暂以占位展示；可对照纸质真题册/官方发布补录。</div>' : '') +
+        (isPending
+          ? '<div class="alert alert-warn" style="margin-top:6px">⚠️ 真题原文涉及版权，暂以占位展示；可对照纸质真题册/官方发布补录。</div>'
+          : (kp && q.kpId ? '<div style="margin-top:8px"><button class="btn btn-sm btn-primary" data-action="practiceFromKp" data-id="' + esc(q.kpId) + '">📝 练习此考点</button></div>' : '')) +
       '</div>' +
     '</div>';
   }).join('');

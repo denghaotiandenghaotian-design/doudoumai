@@ -194,9 +194,12 @@ window.App = {
     toggleZhenTiCard(e, id, el) {
       const key = el.getAttribute('data-key');
       if (!key) return;
-      el.classList.toggle('open');
+      // 注意：CSS 规则是 .collapse-card.open，.open 必须挂在卡片本身，而非点击头
+      const card = el.closest('.collapse-card');
+      if (!card) return;
+      card.classList.toggle('open');
       if (!AppState.zhenTiOpen) AppState.zhenTiOpen = {};
-      AppState.zhenTiOpen[key] = el.classList.contains('open');
+      AppState.zhenTiOpen[key] = card.classList.contains('open');
     },
 
     /* ----- M4 错题回顾 ----- */
