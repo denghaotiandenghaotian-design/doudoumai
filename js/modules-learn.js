@@ -324,7 +324,7 @@ function renderPractice(container) {
 
   let head = '<div class="page-head"><h2>✏️ 智能刷题 <span class="muted small">' + SUBJECT_NAMES[s] + '</span></h2></div>';
 
-  if (!session || session.params.subject !== s || session.submitted === false) {
+  if (!session || session.params.subject !== s) {
     // 参数面板
     container.innerHTML = head +
       '<div class="card">' +
