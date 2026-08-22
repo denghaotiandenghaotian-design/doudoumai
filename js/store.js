@@ -23,6 +23,7 @@ window.AppState = {
   history: [],                     // 刷题历史
   plan: null,                      // 复习计划
   zhenTiFilter: { year: '全部', type: '全部' },
+  zhenTiOpen: {},                  // 真题库卡片展开状态
   mindmapOpen: {},                 // 思维导图展开状态
   planTab: 'overview',             // 计划页当前 Tab
   predictTab: 'report',            // 预测页当前 Tab
