@@ -188,7 +188,15 @@ window.App = {
     /* ----- M2 真题库 ----- */
     resetZhenTiFilter() {
       AppState.zhenTiFilter = { year: '全部', type: '全部' };
+      AppState.zhenTiOpen = {};
       renderPastPapers(document.getElementById('app'));
+    },
+    toggleZhenTiCard(e, id, el) {
+      const key = el.getAttribute('data-key');
+      if (!key) return;
+      el.classList.toggle('open');
+      if (!AppState.zhenTiOpen) AppState.zhenTiOpen = {};
+      AppState.zhenTiOpen[key] = el.classList.contains('open');
     },
 
     /* ----- M4 错题回顾 ----- */
