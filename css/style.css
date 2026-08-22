@@ -606,12 +606,12 @@ textarea.input { min-height: 70px; resize: vertical; }
 .filter-bar .select, .filter-bar .input { padding: 7px 10px; font-size: 13.5px; }
 
 /* ---------- 折叠面板 ---------- */
-details.collapse { border: 1px solid var(--c-border); border-radius: 10px; background: var(--c-card); margin-bottom: 10px; overflow: hidden; }
-details.collapse summary { padding: 12px 14px; cursor: pointer; font-weight: 600; font-size: 14px; list-style: none; }
-details.collapse summary::-webkit-details-marker { display: none; }
-details.collapse summary::before { content: "▸ "; color: var(--c-text-sub); }
-details.collapse[open] summary::before { content: "▾ "; }
-details.collapse .collapse-body { padding: 0 14px 14px; }
+.collapse-card { border: 1px solid var(--c-border); border-radius: 10px; background: var(--c-card); margin-bottom: 10px; overflow: hidden; }
+.collapse-card .collapse-header { padding: 12px 14px; cursor: pointer; font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; -webkit-tap-highlight-color: transparent; }
+.collapse-card .collapse-arrow { display: inline-block; width: 14px; text-align: center; color: var(--c-text-sub); transition: transform .15s ease; }
+.collapse-card.open .collapse-arrow { transform: rotate(90deg); }
+.collapse-card .collapse-body { padding: 0 14px 14px; display: none; }
+.collapse-card.open .collapse-body { display: block; }
 
 /* ---------- 星级 / 标签辅助 ---------- */
 .muted { color: var(--c-text-sub); }
