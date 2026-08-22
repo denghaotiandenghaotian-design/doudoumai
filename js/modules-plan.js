@@ -205,20 +205,28 @@ function renderZhenTiList(zt, f) {
   if (f.year !== '全部') list = list.filter(q => String(q.year) === String(f.year));
   if (f.type !== '全部') list = list.filter(q => q.type === f.type);
   if (list.length === 0) return '<div class="empty">无符合条件的真题</div>';
+  if (!AppState.zhenTiOpen) AppState.zhenTiOpen = {};
   return list.map(q => {
     const kp = DataCenter.getKp(zt.subject || AppState.subject, q.kpId);
     const isPending = q.status === 'pending';
-    return '<details class="collapse">' +
-      '<summary>' + q.year + ' · 第' + q.seq + '题 · <span class="tag">' + esc(q.type) + '</span> <span class="tag tag-blue">' + esc(kp ? kp.name : '未知') + '</span> ' +
+    const key = q.year + '_' + q.seq;
+    const isOpen = !!AppState.zhenTiOpen[key];
+    return '<div class="collapse-card' + (isOpen ? ' open' : '') + '">' +
+      '<div class="collapse-header" data-action="toggleZhenTiCard" data-key="' + esc(key) + '">' +
+      '<span class="collapse-arrow">' + (isOpen ? '▾' : '▸') + '</span>' +
+      '<span>' + q.year + ' · 第' + q.seq + '题</span>' +
+      '<span class="tag">' + esc(q.type) + '</span> ' +
+      '<span class="tag tag-blue">' + esc(kp ? kp.name : '未知') + '</span> ' +
       '<span class="tag">' + (q.score || '?') + ' 分</span> ' +
-      (isPending ? '<span class="tag tag-orange">待补原题</span>' : '<span class="tag tag-green">样题</span>') + '</summary>' +
+      (isPending ? '<span class="tag tag-orange">待补原题</span>' : '<span class="tag tag-green">样题</span>') +
+      '</div>' +
       '<div class="collapse-body">' +
         '<div class="small"><span class="bold">考点：</span>' + esc(kp ? kp.name + '（' + kp.board + '）' : '未知') + '</div>' +
         '<div class="small"><span class="bold">答案：</span>' + esc(q.answer) + '</div>' +
         '<div class="small muted">' + esc(q.analysis) + '</div>' +
         (isPending ? '<div class="alert alert-warn" style="margin-top:6px">⚠️ 真题原文涉及版权，暂以占位展示；可对照纸质真题册/官方发布补录。</div>' : '') +
       '</div>' +
-    '</details>';
+    '</div>';
   }).join('');
 }
 
